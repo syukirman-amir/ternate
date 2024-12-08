@@ -1,16 +1,19 @@
 import streamlit as st
-from arcgis.gis import GIS
-from arcgis.mapping import WebMap
+import folium
+from folium.plugins import MarkerCluster
 
-# Membuat koneksi ke ArcGIS Online (atau Portal)
-gis = GIS("home")  # atau bisa menggunakan kredensial ArcGIS Online
+# Koordinat Ternate
+latitude = -0.7994
+longitude = 127.3806
 
-# ID Web Map untuk Ternate, pastikan Anda punya ID Web Map yang sudah ada
-web_map_id = "abd95acd635d43a097727e908d450b03"  # Gantilah dengan ID Web Map yang sesuai
+# Membuat peta dasar
+map_ternate = folium.Map(location=[latitude, longitude], zoom_start=12)
 
-# Membuat objek WebMap
-web_map = WebMap(gis.content.get(web_map_id))
+# Menambahkan marker untuk lokasi tertentu
+marker_cluster = MarkerCluster().add_to(map_ternate)
+folium.Marker([latitude, longitude], popup="Ternate").add_to(marker_cluster)
 
-# Menampilkan peta
-st.title("Peta Lokasi Ternate")
-web_map.show()
+# Menampilkan peta dalam Streamlit
+st.title("Peta Interaktif Ternate")
+st.write("Peta dengan folium:")
+st.markdown(folium.Figure().add_child(map_ternate)._repr_html_(), unsafe_allow_html=True)
