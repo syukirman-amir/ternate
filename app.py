@@ -1,6 +1,7 @@
 import streamlit as st
 import folium
 from folium.plugins import MarkerCluster
+from streamlit.components.v1 import html
 
 # Koordinat pusat Ternate
 latitude = -0.7994
@@ -24,8 +25,10 @@ locations = [
 for location in locations:
     folium.Marker([location["lat"], location["lon"]], popup=location["name"]).add_to(marker_cluster)
 
-# Menampilkan peta dengan Streamlit
+# Menampilkan peta dengan Streamlit menggunakan st.components.v1.html
 st.title("Peta Interaktif Ternate")
 st.write("Peta interaktif menggunakan Folium")
-st.markdown("Peta ini menunjukkan lokasi kecamatan di Ternate.")
-st.markdown(folium.Figure().add_child(map_ternate)._repr_html_(), unsafe_allow_html=True)
+
+# Mengonversi peta ke HTML dan menampilkannya menggunakan Streamlit
+map_html = map_ternate._repr_html_()
+html(map_html, height=600)
