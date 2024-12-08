@@ -14,7 +14,7 @@ kelurahan_data = [
 ]
 
 # Membuat peta dasar dengan folium, berpusat di Ternate
-map_ternate = folium.Map(location=[-0.7994, 127.3806], zoom_start=12, tiles='stamenterrain')
+map_ternate = folium.Map(location=[0.852280, 127.356975], zoom_start=12)
 
 # Menambahkan MarkerCluster untuk menampung beberapa marker
 marker_cluster = MarkerCluster().add_to(map_ternate)
