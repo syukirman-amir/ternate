@@ -6,7 +6,7 @@ from arcgis.mapping import WebMap
 gis = GIS("home")  # atau bisa menggunakan kredensial ArcGIS Online
 
 # ID Web Map untuk Ternate, pastikan Anda punya ID Web Map yang sudah ada
-web_map_id = "ID_WEB_MAP_TERNAK"  # Gantilah dengan ID Web Map yang sesuai
+web_map_id = "abd95acd635d43a097727e908d450b03"  # Gantilah dengan ID Web Map yang sesuai
 
 # Membuat objek WebMap
 web_map = WebMap(gis.content.get(web_map_id))
